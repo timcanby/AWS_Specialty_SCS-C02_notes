@@ -1,24 +1,25 @@
+# .github/workflows/toc.yml
 name: Update TOC
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main ]          
 
 jobs:
-  build:
+  generate-toc:
     runs-on: ubuntu-latest
-    if: github.actor != 'github-actions[bot]'
+    if: github.actor != 'github-actions[bot]'   
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/markdown-toc@v1
+      - uses: technote-space/toc-generator@v4   
         with:
-          files: README.md
+          TARGET_PATHS: README.md,Scenario*_*.md
 
       - name: Commit changes
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add README.md
-          git commit -m "chore: update TOC" || exit 0
+          git add .
+          git commit -m "docs: update TOC" || exit 0
           git push
