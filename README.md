@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="logo.jpg" alt="AWS SCS-C02 Notes Logo" width="180"/>
+  <img src="image.png" alt="AWS SCS-C02 Notes Logo" width="180"/>
 </p>
 
 <h1 align="center">AWS Specialty SCS-C02&nbsp;Notes</h1>
