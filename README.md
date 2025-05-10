@@ -27,9 +27,7 @@
 
 1. **Fork & PR** — *typos, alternative solutions, brand-new scenarios are all welcome!*  
    **フォークして PR を送ってください。タイプミス修正、新しいアプローチ、シナリオ追加など何でも OK！**  
-2. **Keep bilingual parity** — ensure each scenario file has both **EN / JA** versions for easy cross-reference.  
-   **英日両方のファイルをそろえてください。**  
-3. **Found a mistake or better practice?**    
+2. **Found a mistake or better practice?**    
    Open an **Issue**—even a one-line correction may save future readers!  
    **誤りや改善案は Issue でお知らせください。小さな指摘でも大助かりです 🙏**  
 
