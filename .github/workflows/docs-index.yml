@@ -1,0 +1,47 @@
+name: Build docs index
+
+on:
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: write       
+
+jobs:
+  index:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-actions[bot]'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate index list
+        run: |
+          echo "<!-- docs-index:start -->"        >  index.tmp
+          echo ""                                  >> index.tmp
+        
+          for f in *.md; do
+            [ "$f" = "README.md" ] && continue
+            title=$(grep -m1 '^# ' "$f" | sed 's/^# \+\(.*\)/\1/')
+            [ -n "$title" ] && echo "- [$title]($f)" >> index.tmp
+          done
+          echo ""                                  >> index.tmp
+          echo "<!-- docs-index:end -->"           >> index.tmp
+
+      - name: Patch README.md
+        run: |
+          perl -0777 -pe \
+            's/<!-- docs-index:start -->.*?<!-- docs-index:end -->/`cat index.tmp`/e' \
+            README.md > README.new
+          mv README.new README.md
+
+      - name: Commit changes
+        run: |
+          if git diff --quiet; then
+            echo "No index changes"
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "docs: update global index"
+          git push
