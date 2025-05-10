@@ -64,9 +64,8 @@ Account A の Lambda 関数が Account B の S3 バケットへサムネイル�
 ## 🛠️ 実装例
 
 ### Account B: IAM ロール（ThumbXRole）
-
-```json
 // 信頼ポリシー
+```json
 {
   "Version": "2012-10-17",
   "Statement": [{
@@ -76,9 +75,8 @@ Account A の Lambda 関数が Account B の S3 バケットへサムネイル�
   }]
 }
 ```
-
-```json
 // 権限ポリシー
+```json
 {
   "Effect": "Allow",
   "Action": ["s3:GetObject", "s3:PutObject"],
