@@ -17,10 +17,6 @@
 
 ## ✨ About This Project / このプロジェクトについて
 
-| 🌟 Goals / 目的 | 🧩 What’s Inside / 内容 |
-|--|--|
-| **EN**  Document real business scenarios encountered in daily study → distill them with the fixed structure **“Scenario → Test Points → Knowledge → Summary”**. Your feedback & best-practice tips are greatly welcomed!<br>**JP**  日々の学習で遭遇した実務シナリオを「Scenario → Test Points → Knowledge → Summary」のフォーマットで整理。誤りの指摘やベストプラクティスの共有は大歓迎です！ | **EN**  *Bilingual scenario files* (`ScenarioX_en.md` / `ScenarioX_ja.md`)<br>  • Command snippets, diagrams, reference links<br>  • Auto-generated repo-wide index & per-file TOC<br><br>**JP**  シナリオは英日対応ファイルで管理。<br>  • 主要コマンド・図解・参考リンク<br>  • リポジトリ全体の目次と各ファイル内 TOC を GitHub Actions で自動生成 |
-
 | ❓ Why / なぜ | ⚙️ How / どうやって |
 |--|--|
 | **EN**  Turn scattered notes into a structured knowledge base—easy to review, easy to share. <br>**JP**  断片的なメモを体系化し、復習と共有を楽にするため。| **EN**  GitHub Actions keeps TOCs up-to-date; a shell script collects every H1 across the repo and injects them into the README index. <br>**JP**  GitHub Actions で TOC を自動更新。シェルスクリプトが各 *.md* の H1 を取得し、README のインデックスに反映します。|
