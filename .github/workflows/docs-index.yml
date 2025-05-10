@@ -21,8 +21,13 @@ jobs:
         
           for f in *.md; do
             [ "$f" = "README.md" ] && continue
+          
             title=$(grep -m1 '^# ' "$f" | sed 's/^# \+\(.*\)/\1/')
-            [ -n "$title" ] && echo "- [$title]($f)" >> index.tmp
+            case "$title" in
+              ""|"Table of Contents"|"AWS_Specialty_SCS-C02_notes") continue ;;
+            esac
+          
+            echo "- [$title]($f)" >> index.tmp
           done
           echo ""                                  >> index.tmp
           echo "<!-- docs-index:end -->"           >> index.tmp
