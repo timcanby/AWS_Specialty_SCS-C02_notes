@@ -1,3 +1,19 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [AWS Lambda × S3：クロスアカウント画像処理システムの安全設計](#aws-lambda-%C3%97-s3%E3%82%AF%E3%83%AD%E3%82%B9%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%E7%94%BB%E5%83%8F%E5%87%A6%E7%90%86%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%81%AE%E5%AE%89%E5%85%A8%E8%A8%AD%E8%A8%88)
+  - [📘 Scenario（シナリオ）](#-scenario%E3%82%B7%E3%83%8A%E3%83%AA%E3%82%AA)
+  - [🎯 Test Points（考察ポイント）](#-test-points%E8%80%83%E5%AF%9F%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88)
+  - [✅ Summary（まとめ）](#-summary%E3%81%BE%E3%81%A8%E3%82%81)
+  - [🛠️ 実装例](#-%E5%AE%9F%E8%A3%85%E4%BE%8B)
+    - [Account B: IAM ロール（ThumbXRole）](#account-b-iam-%E3%83%AD%E3%83%BC%E3%83%ABthumbxrole)
+    - [Account A: Lambda 実行ロールに追加](#account-a-lambda-%E5%AE%9F%E8%A1%8C%E3%83%AD%E3%83%BC%E3%83%AB%E3%81%AB%E8%BF%BD%E5%8A%A0)
+    - [Lambda コードで AssumeRole 実行](#lambda-%E3%82%B3%E3%83%BC%E3%83%89%E3%81%A7-assumerole-%E5%AE%9F%E8%A1%8C)
+  - [🔐 セキュリティチェック](#-%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%83%81%E3%82%A7%E3%83%83%E3%82%AF)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 
 # AWS Lambda × S3：クロスアカウント画像処理システムの安全設計
 
