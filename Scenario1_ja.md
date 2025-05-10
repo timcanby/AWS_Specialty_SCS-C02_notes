@@ -199,7 +199,7 @@ S3アクセス権限（GetObject / PutObject）は一切付与されていない
   "Effect": "Allow",
   "Resource": "arn:aws:s3:::my-image-bucket/*"
 }
-      ```
+ ```    
 
 - つまり、**リソース側でアクセスを許可しているので、IAMロール側でS3権限がなくてもアクセスできる**という構成。
 
