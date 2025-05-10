@@ -2,44 +2,46 @@ name: Build docs index
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main ]         
 
 permissions:
-  contents: write       
+  contents: write              
 
 jobs:
   index:
     runs-on: ubuntu-latest
-    if: github.actor != 'github-actions[bot]'
+    if: github.actor != 'github-actions[bot]'  
     steps:
       - uses: actions/checkout@v4
 
       - name: Generate index list
+        shell: bash
         run: |
-          echo "<!-- docs-index:start -->"        >  index.tmp
-          echo ""                                  >> index.tmp
-        
-          for f in *.md; do
-            [ "$f" = "README.md" ] && continue
-          
+          tmp=index.tmp
+          echo "<!-- docs-index:start -->"  >  $tmp
+          echo ""                            >> $tmp
+
+     
+          while IFS= read -r f; do
+            [[ $f == README.md ]] && continue
             title=$(grep -m1 '^# ' "$f" | sed 's/^# \+\(.*\)/\1/')
             case "$title" in
               ""|"Table of Contents"|"AWS_Specialty_SCS-C02_notes") continue ;;
             esac
-          
-            echo "- [$title]($f)" >> index.tmp
-          done
-          echo ""                                  >> index.tmp
-          echo "<!-- docs-index:end -->"           >> index.tmp
+            echo "- [$title]($f)" >> $tmp
+          done < <(git ls-files '*.md')
+
+          echo ""                            >> $tmp
+          echo "<!-- docs-index:end -->"     >> $tmp
 
       - name: Patch README.md
+        shell: bash
         run: |
-          perl -0777 -pe \
-            's/<!-- docs-index:start -->.*?<!-- docs-index:end -->/`cat index.tmp`/e' \
-            README.md > README.new
+          sed -e '/<!-- docs-index:start -->/,/<!-- docs-index:end -->/c\'"$(sed -e 's/[\/&]/\\&/g' -e '$!s/$/\\/' index.tmp)" README.md > README.new
           mv README.new README.md
 
       - name: Commit changes
+        shell: bash
         run: |
           if git diff --quiet; then
             echo "No index changes"
