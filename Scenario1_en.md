@@ -1,3 +1,39 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [AWS Lambda × S3 Secure Design for Serverless Image Processing Systems](#aws-lambda-%C3%97-s3-secure-design-for-serverless-image-processing-systems)
+  - [📘 Scenario](#-scenario)
+  - [🎯 Test Points](#-test-points)
+  - [🧠 Related Knowledge](#-related-knowledge)
+    - [IAM User vs. IAM Role](#iam-user-vs-iam-role)
+    - [IAM Policy](#iam-policy)
+    - [S3 Bucket Policy](#s3-bucket-policy)
+    - [AWS Secrets Manager (reference)](#aws-secrets-manager-reference)
+    - [EC2 Key Pair](#ec2-key-pair)
+    - [Security Group](#security-group)
+  - [✅ Summary](#-summary)
+    - [Recommended Approach](#recommended-approach)
+    - [Approaches to Avoid](#approaches-to-avoid)
+  - [IAM Roles: Trust Policy vs. Permissions Policy](#iam-roles-trust-policy-vs-permissions-policy)
+    - [💡 Easy Analogy](#-easy-analogy)
+    - [Example: Lambda Execution Role](#example-lambda-execution-role)
+- [Lambda × S3: Centralized Access Control via Bucket Policy](#lambda-%C3%97-s3-centralized-access-control-via-bucket-policy)
+  - [✅ Step 1: Create the Lambda Execution Role (e.g., LambdaThumbRole)](#-step-1-create-the-lambda-execution-role-eg-lambdathumbrole)
+    - [🔸 Trust Policy](#-trust-policy)
+    - [🔸 Minimal IAM Policy (for logging only)](#-minimal-iam-policy-for-logging-only)
+  - [✅ Step 2: Add a Bucket Policy to the S3 bucket](#-step-2-add-a-bucket-policy-to-the-s3-bucket)
+  - [✅ Step 3 (Optional): Trigger Lambda from S3 Event](#-step-3-optional-trigger-lambda-from-s3-event)
+- [✅ Summary: Key Points on Lambda Role and S3 Bucket Policy Permissions](#-summary-key-points-on-lambda-role-and-s3-bucket-policy-permissions)
+  - [💡 Background](#-background)
+  - [💡 Why can Lambda still access S3?](#-why-can-lambda-still-access-s3)
+  - [✅ Conclusion: For some AWS services (e.g., S3), access can be granted solely by the resource policy](#-conclusion-for-some-aws-services-eg-s3-access-can-be-granted-solely-by-the-resource-policy)
+  - [🎯 Key Takeaways](#-key-takeaways)
+  - [🔐 Security Benefits](#-security-benefits)
+  - [✅ This is a textbook example of centralized access control on the resource side](#-this-is-a-textbook-example-of-centralized-access-control-on-the-resource-side)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 
 # AWS Lambda × S3 Secure Design for Serverless Image Processing Systems
 
