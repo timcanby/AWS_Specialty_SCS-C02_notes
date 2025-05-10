@@ -15,17 +15,13 @@
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 
-# AWS Lambda × S3：クロスアカウント画像処理システムの安全設計
+# AWS Lambda × S3 ：クロスアカウントサーバーレス画像処理システムの安全設計
 
-<p align="center">
-  <img src="https://img.shields.io/badge/AWS-Lambda-green?logo=amazonaws&style=for-the-badge" />
-  <img src="https://img.shields.io/badge/S3-Cross--Account-blue?logo=amazonaws&style=for-the-badge" />
-</p>
+## 📘 Scenario（シナリオ）
 
-> **目的**  
-> “Account A の Lambda 関数が Account B の S3 バケットへサムネイルを生成・保存する”  
-> **クロスアカウント構成**における安全設計のベストプラクティスを解説します。
-
+“Account A の Lambda 関数が Account B の S3 バケットへサムネイルを生成・保存する”  
+このような場合、**Lambda が S3 にアクセスするための適切で安全な認可設定**が重要なポイントとなります。
+**クロスアカウント構成**における安全設計のベストプラクティスを解説します。
 ---
 
 ## 📘 Scenario（シナリオ）
