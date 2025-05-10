@@ -96,3 +96,74 @@ Lambda と S3 の統合においては、**IAM ロールを中心に設計する
 - 権限ポリシーで CloudWatch Logs と S3バケットのアクセスを許可
 
 両方の設定が揃って初めて、安全かつ正しくリソースにアクセスできます。
+
+# Lambda × S3：バケットポリシーによるリソース側集中管理の設定手順
+
+## ✅ ステップ 1：Lambda実行ロールの作成（例：LambdaThumbRole）
+
+### 🔸 信頼ポリシー（Trust Policy）
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": { "Service": "lambda.amazonaws.com" },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
+```
+### 🔸 最小権限のIAMポリシー（ログ出力用）
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "logs:CreateLogGroup",
+        "logs:CreateLogStream",
+        "logs:PutLogEvents"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+```
+このロールに付与するIAMポリシーは、CloudWatch Logsへの出力に必要な最小限の権限のみを持たせます。
+※ S3アクセス権限はバケットポリシーで制御します。
+
+## ✅ ステップ 2：S3バケット側にBucket Policyを設定
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowLambdaThumbRoleAccess",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::123456789012:role/LambdaThumbRole"
+      },
+      "Action": [
+        "s3:GetObject",
+        "s3:PutObject"
+      ],
+      "Resource": [
+        "arn:aws:s3:::my-image-bucket",
+        "arn:aws:s3:::my-image-bucket/*"
+      ]
+    }
+  ]
+}
+```
+## ✅ ステップ 3（任意）：S3イベント通知でLambdaをトリガー
+
+S3の「イベント通知」設定で、ObjectCreated イベント発生時に Lambda 関数をトリガーするよう設定します。
+➡ ファイルがアップロードされたら自動的にLambdaが呼び出され、サムネイル生成を実行。
+
+
+
