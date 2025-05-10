@@ -1,11 +1,17 @@
 <p align="center">
+  <img src="project_logp.jpg" alt="AWS SCS-C02 Notes Logo" width="180"/>
+</p>
+
+<h1 align="center">AWS Specialty SCS-C02&nbsp;Notes</h1>
+
+<p align="center">
   <img src="https://img.shields.io/badge/AWS-SCS--C02-blue?logo=amazonaws&style=for-the-badge" />
   <img src="https://img.shields.io/github/license/timcanby/AWS_Specialty_SCS-C02_notes?style=for-the-badge" />
   <img src="https://badgen.net/badge/PRs/Welcome/green?icon=github" />
 </p>
 
 > **A curated collection of everyday study notes, real-world scenario analyses, and hands-on demos for the AWS Certified Security – Specialty (SCS-C02) exam.**  
-> **AWS セキュリティ専門資格（SCS-C02）学習のためのシナリオ分析・実践メモ集です。**  
+> **AWS セキュリティ専門資格（SCS-C02）学習のためのシナリオ分析・実践メモ集です。**
 
 ---
 
