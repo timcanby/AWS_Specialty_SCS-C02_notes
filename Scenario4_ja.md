@@ -22,7 +22,7 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-# AWS CloudFormation StackSets × セキュリティ通知設計ドキュメント（日本語）
+# AWS CloudFormation StackSets × セキュリティ通知設計ドキュメント
 
 ---
 
