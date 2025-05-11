@@ -1,3 +1,27 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [AWS EC2 × SSM: Secure Incident‑Response Workflow (Memory Preservation & Isolation)](#aws-ec2%C2%A0%C3%97%C2%A0ssm-secure-incident%E2%80%91response-workflow-memory-preservation%C2%A0-isolation)
+  - [📘 Scenario](#-scenario)
+  - [🔎 Investigation Workflow](#-investigation-workflow)
+  - [🛡️ Isolation Strategy](#-isolation-strategy)
+  - [🔧 Security‑Group Hardening](#-security%E2%80%91group-hardening)
+  - [🚀 Collecting Volatile Data with **SSM Run Command**](#-collecting-volatile-data-with-ssm%C2%A0run%C2%A0command)
+    - [Why **Run Command** over SSH/RDP?](#why-run%C2%A0command-over-sshrdp)
+  - [💾 Creating an EBS Snapshot & Tagging](#-creating-an-ebs-snapshot%C2%A0-tagging)
+  - [❌ Why Options **B / D / F** Are Not Optimal](#-why-options-b%C2%A0%C2%A0d%C2%A0%C2%A0f-are-not-optimal)
+    - [Option B – move instance to an isolation subnet](#option%C2%A0b--move-instance-to-an-isolation-subnet)
+    - [Option D – open SSH/RDP and run scripts](#option%C2%A0d--open-sshrdp-and-run-scripts)
+    - [Option F – State Manager association to create snapshot](#option%C2%A0f--state%C2%A0manager-association-to-create-snapshot)
+  - [📚 Extras](#-extras)
+    - [What is an **RDP session**?](#what-is-an-rdp-session)
+    - [Other common **Run Command** use cases](#other-common-run%C2%A0command-use-cases)
+    - [Typical **State Manager** scenarios](#typical-state%C2%A0manager-scenarios)
+  - [🔐 Security Checklist](#-security-checklist)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 
 # AWS EC2 × SSM: Secure Incident‑Response Workflow (Memory Preservation & Isolation)
 
