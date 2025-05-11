@@ -2,7 +2,7 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**
 
-- [Direct Connect×IPsecで実現する低遅延・高可用なオンプレDB接続構成](#direct-connect%C3%97ipsec%E3%81%A7%E5%AE%9F%E7%8F%BE%E3%81%99%E3%82%8B%E4%BD%8E%E9%81%85%E5%BB%B6%E3%83%BB%E9%AB%98%E5%8F%AF%E7%94%A8%E3%81%AA%E3%82%AA%E3%83%B3%E3%83%97%E3%83%ACdb%E6%8E%A5%E7%B6%9A%E6%A7%8B%E6%88%90)
+- [Direct Connect×Site‑to‑Site VPNで実現する低遅延・高可用なオンプレDB接続構成](#direct-connect%C3%97site%E2%80%91to%E2%80%91site-vpn%E3%81%A7%E5%AE%9F%E7%8F%BE%E3%81%99%E3%82%8B%E4%BD%8E%E9%81%85%E5%BB%B6%E3%83%BB%E9%AB%98%E5%8F%AF%E7%94%A8%E3%81%AA%E3%82%AA%E3%83%B3%E3%83%97%E3%83%ACdb%E6%8E%A5%E7%B6%9A%E6%A7%8B%E6%88%90)
   - [📘 Scenario（シナリオ）](#-scenario%E3%82%B7%E3%83%8A%E3%83%AA%E3%82%AA)
   - [🎯 Test Points（考察ポイント）](#-test-points%E8%80%83%E5%AF%9F%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88)
   - [✅ Summary（まとめ）](#-summary%E3%81%BE%E3%81%A8%E3%82%81)
