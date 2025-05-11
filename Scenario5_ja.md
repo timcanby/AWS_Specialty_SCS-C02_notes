@@ -2,7 +2,7 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**
 
-- [AWS Direct Connect × Site-to-Site VPN](#aws-direct-connect-%C3%97-site-to-site-vpn)
+- [AWS Direct Connect × Site-to-Site VPN  オンプレ ⇄ AWS 通信](#aws-direct-connect-%C3%97-site-to-site-vpn--%E3%82%AA%E3%83%B3%E3%83%97%E3%83%AC-%E2%87%84-aws-%E9%80%9A%E4%BF%A1)
   - [低遅延 & IPsec 接続設計ドキュメント](#%E4%BD%8E%E9%81%85%E5%BB%B6--ipsec-%E6%8E%A5%E7%B6%9A%E8%A8%AD%E8%A8%88%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88)
   - [📘 Scenario（シナリオ）](#-scenario%E3%82%B7%E3%83%8A%E3%83%AA%E3%82%AA)
   - [🎯 Test Points（考察ポイント）](#-test-points%E8%80%83%E5%AF%9F%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88)
