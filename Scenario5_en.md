@@ -1,3 +1,21 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [AWS Direct Connect × Site‑to‑Site VPN](#aws-direct-connect-%C3%97-site%E2%80%91to%E2%80%91site-vpn)
+  - [Low‑Latency & IPsec Connectivity Design Document](#low%E2%80%91latency--ipsec-connectivity-design-document)
+  - [📘 Scenario](#-scenario)
+  - [🎯 Test Points](#-test-points)
+  - [✅ Summary](#-summary)
+  - [🛠️ Implementation Example](#-implementation-example)
+    - [1. High‑level Network Layout](#1-high%E2%80%91level-network-layout)
+    - [2. BGP Routing Example](#2-bgp-routing-example)
+    - [3. CloudFormation Snippet (CGW & VPN)](#3-cloudformation-snippet-cgw%C2%A0%C2%A0vpn)
+  - [🔐 Key Security Settings](#-key-security-settings)
+  - [🚦 Operational Best Practices](#-operational-best-practices)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # AWS Direct Connect × Site‑to‑Site VPN  
 Low‑Latency & IPsec Connectivity Design Document
 ---
