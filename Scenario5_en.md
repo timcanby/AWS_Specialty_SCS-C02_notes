@@ -16,7 +16,7 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-# AWS Direct Connect × Site‑to‑Site VPN-EN  
+# Low-Latency, IPsec-Encrypted Hybrid Architecture: Direct Connect + Site-to-Site VPN for On-Prem DB Compliance
 Low‑Latency & IPsec Connectivity Design Document
 ---
 
