@@ -16,8 +16,8 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-# AWS Direct Connect × Site-to-Site VPN  オンプレ ⇄ AWS 通信
-低遅延 & IPsec 接続設計ドキュメント
+# Direct Connect×IPsecで実現する低遅延・高可用なオンプレDB接続構成
+
 ---
 
 ## 📘 Scenario（シナリオ）
