@@ -16,7 +16,7 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-# AWS Direct Connect × Site-to-Site VPN  
+# AWS Direct Connect × Site-to-Site VPN  オンプレ ⇄ AWS 通信
 低遅延 & IPsec 接続設計ドキュメント
 ---
 
