@@ -50,5 +50,7 @@
 - [AWS Lambda × S3 ：クロスアカウントサーバーレス画像処理システムの安全設計](Scenario2_ja.md)
 - [AWS EC2 × SSM: Secure Incident‑Response Workflow (Memory Preservation & Isolation)](Scenario3_en.md)
 - [AWS EC2 × SSM：セキュリティインシデント対応プロセスの安全設計（メモリ保持と隔離）](Scenario3_ja.md)
+- [AWS CloudFormation StackSets × Security Notification Design Document](Scenario4_en.md)
+- [AWS CloudFormation StackSets × セキュリティ通知設計ドキュメント（日本語）](Scenario4_ja.md)
 
 <!-- docs-index:end -->
