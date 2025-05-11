@@ -1,3 +1,27 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [AWS CloudFormation StackSets × セキュリティ通知設計ドキュメント（日本語）](#aws-cloudformation-stacksets-%C3%97-%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E9%80%9A%E7%9F%A5%E8%A8%AD%E8%A8%88%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E6%97%A5%E6%9C%AC%E8%AA%9E)
+  - [📘 Scenario（シナリオ）](#-scenario%E3%82%B7%E3%83%8A%E3%83%AA%E3%82%AA)
+  - [🧠 重要ポイント](#-%E9%87%8D%E8%A6%81%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88)
+  - [🛠️ 実装例](#-%E5%AE%9F%E8%A3%85%E4%BE%8B)
+    - [CloudFormation Guard ルールの例（例: EC2 インスタンスと S3 バケットの検証）](#cloudformation-guard-%E3%83%AB%E3%83%BC%E3%83%AB%E3%81%AE%E4%BE%8B%E4%BE%8B-ec2-%E3%82%A4%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%B3%E3%82%B9%E3%81%A8-s3-%E3%83%90%E3%82%B1%E3%83%83%E3%83%88%E3%81%AE%E6%A4%9C%E8%A8%BC)
+    - [CI/CD 内での実行例（Docker を利用）](#cicd-%E5%86%85%E3%81%A7%E3%81%AE%E5%AE%9F%E8%A1%8C%E4%BE%8Bdocker-%E3%82%92%E5%88%A9%E7%94%A8)
+    - [検証失敗時の SNS 通知例（CodePipeline）](#%E6%A4%9C%E8%A8%BC%E5%A4%B1%E6%95%97%E6%99%82%E3%81%AE-sns-%E9%80%9A%E7%9F%A5%E4%BE%8Bcodepipeline)
+  - [🔐 セキュリティチェック](#-%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%83%81%E3%82%A7%E3%83%83%E3%82%AF)
+  - [🚀 推奨ソリューション: CloudFormation Guard の活用](#-%E6%8E%A8%E5%A5%A8%E3%82%BD%E3%83%AA%E3%83%A5%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3-cloudformation-guard-%E3%81%AE%E6%B4%BB%E7%94%A8)
+    - [CloudFormation Guard（cfn-guard）とは？](#cloudformation-guardcfn-guard%E3%81%A8%E3%81%AF)
+    - [代表的な活用例](#%E4%BB%A3%E8%A1%A8%E7%9A%84%E3%81%AA%E6%B4%BB%E7%94%A8%E4%BE%8B)
+    - [ポリシー例](#%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E4%BE%8B)
+  - [📦 CloudFormation Stack とは？](#-cloudformation-stack-%E3%81%A8%E3%81%AF)
+    - [利用タイミング](#%E5%88%A9%E7%94%A8%E3%82%BF%E3%82%A4%E3%83%9F%E3%83%B3%E3%82%B0)
+  - [🛡️ 事前防止策（シフトレフトセキュリティ）](#-%E4%BA%8B%E5%89%8D%E9%98%B2%E6%AD%A2%E7%AD%96%E3%82%B7%E3%83%95%E3%83%88%E3%83%AC%E3%83%95%E3%83%88%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3)
+  - [✅ インフラ・アズ・コード運用のベストプラクティス](#-%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9%E3%83%BB%E3%82%A2%E3%82%BA%E3%83%BB%E3%82%B3%E3%83%BC%E3%83%89%E9%81%8B%E7%94%A8%E3%81%AE%E3%83%99%E3%82%B9%E3%83%88%E3%83%97%E3%83%A9%E3%82%AF%E3%83%86%E3%82%A3%E3%82%B9)
+  - [🔔 結論](#-%E7%B5%90%E8%AB%96)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # AWS CloudFormation StackSets × セキュリティ通知設計ドキュメント（日本語）
 
 ---
