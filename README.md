@@ -53,6 +53,6 @@
 - [AWS CloudFormation StackSets × Security Notification Design Document](Scenario4_en.md)
 - [AWS CloudFormation StackSets × セキュリティ通知設計ドキュメント（日本語）](Scenario4_ja.md)
 - [Low-Latency, IPsec-Encrypted Hybrid Architecture: Direct Connect + Site-to-Site VPN for On-Prem DB Compliance](Scenario5_en.md)
-- [AWS Direct Connect × Site-to-Site VPN  オンプレ ⇄ AWS 通信](Scenario5_ja.md)
+- [Direct Connect×IPsecで実現する低遅延・高可用なオンプレDB接続構成](Scenario5_ja.md)
 
 <!-- docs-index:end -->
