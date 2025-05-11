@@ -2,7 +2,7 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**
 
-- [AWS Direct Connect × Site‑to‑Site VPN](#aws-direct-connect-%C3%97-site%E2%80%91to%E2%80%91site-vpn)
+- [AWS Direct Connect × Site‑to‑Site VPN-EN](#aws-direct-connect-%C3%97-site%E2%80%91to%E2%80%91site-vpn-en)
   - [Low‑Latency & IPsec Connectivity Design Document](#low%E2%80%91latency--ipsec-connectivity-design-document)
   - [📘 Scenario](#-scenario)
   - [🎯 Test Points](#-test-points)
