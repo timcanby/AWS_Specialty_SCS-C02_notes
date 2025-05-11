@@ -1,3 +1,27 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [AWS CloudFormation StackSets × Security Notification Design Document](#aws-cloudformation-stacksets-%C3%97-security-notification-design-document)
+  - [📘 Scenario](#-scenario)
+  - [🧠 Key Points](#-key-points)
+  - [🛠️ Implementation Example](#-implementation-example)
+    - [CloudFormation Guard Rule Samples (for EC2 and S3 validation)](#cloudformation-guard-rule-samples-for-ec2-and-s3-validation)
+    - [Example CI/CD Execution (using Docker)](#example-cicd-execution-using-docker)
+    - [Example SNS Notification for Validation Failure (CodePipeline)](#example-sns-notification-for-validation-failure-codepipeline)
+  - [🔐 Security Checks](#-security-checks)
+  - [🚀 Recommended Solution: CloudFormation Guard](#-recommended-solution-cloudformation-guard)
+    - [What is CloudFormation Guard (cfn-guard)?](#what-is-cloudformation-guard-cfn-guard)
+    - [Common Use Cases](#common-use-cases)
+    - [Policy Example](#policy-example)
+  - [📦 What is a CloudFormation Stack?](#-what-is-a-cloudformation-stack)
+    - [When to Use It](#when-to-use-it)
+  - [🛡️ Preventive Measures (Shift-left Security)](#-preventive-measures-shift-left-security)
+  - [✅ IaC Best Practices](#-iac-best-practices)
+  - [🔔 Conclusion](#-conclusion)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 
 # AWS CloudFormation StackSets × Security Notification Design Document
 
