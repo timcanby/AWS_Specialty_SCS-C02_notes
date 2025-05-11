@@ -15,7 +15,7 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-# Direct Connect×IPsecで実現する低遅延・高可用なオンプレDB接続構成
+# Direct Connect×Site‑to‑Site VPNで実現する低遅延・高可用なオンプレDB接続構成
 
 ---
 
