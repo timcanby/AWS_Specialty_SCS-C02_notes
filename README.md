@@ -52,5 +52,6 @@
 - [AWS EC2 × SSM：セキュリティインシデント対応プロセスの安全設計（メモリ保持と隔離）](Scenario3_ja.md)
 - [AWS CloudFormation StackSets × Security Notification Design Document](Scenario4_en.md)
 - [AWS CloudFormation StackSets × セキュリティ通知設計ドキュメント（日本語）](Scenario4_ja.md)
+- [AWS Direct Connect × Site-to-Site VPN  ](Scenario5_ja.md)
 
 <!-- docs-index:end -->
