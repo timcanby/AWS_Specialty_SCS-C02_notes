@@ -53,6 +53,6 @@
 - [AWS CloudFormation StackSets × Security Notification Design Document](Scenario4_en.md)
 - [AWS CloudFormation StackSets × セキュリティ通知設計ドキュメント（日本語）](Scenario4_ja.md)
 - [AWS Direct Connect × Site‑to‑Site VPN-EN  ](Scenario5_en.md)
-- [AWS Direct Connect × Site-to-Site VPN  ](Scenario5_ja.md)
+- [AWS Direct Connect × Site-to-Site VPN  オンプレ ⇄ AWS 通信](Scenario5_ja.md)
 
 <!-- docs-index:end -->
