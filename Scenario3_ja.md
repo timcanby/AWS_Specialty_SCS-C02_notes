@@ -1,3 +1,38 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [AWS EC2 × SSM：セキュリティインシデント対応プロセスの安全設計（メモリ保持と隔離）](#aws-ec2-%C3%97-ssm%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%82%A4%E3%83%B3%E3%82%B7%E3%83%87%E3%83%B3%E3%83%88%E5%AF%BE%E5%BF%9C%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E3%81%AE%E5%AE%89%E5%85%A8%E8%A8%AD%E8%A8%88%E3%83%A1%E3%83%A2%E3%83%AA%E4%BF%9D%E6%8C%81%E3%81%A8%E9%9A%94%E9%9B%A2)
+  - [📘 Scenario（シナリオ）](#-scenario%E3%82%B7%E3%83%8A%E3%83%AA%E3%82%AA)
+  - [🔎 Investigation Workflow（調査フローの全体像）](#-investigation-workflow%E8%AA%BF%E6%9F%BB%E3%83%95%E3%83%AD%E3%83%BC%E3%81%AE%E5%85%A8%E4%BD%93%E5%83%8F)
+  - [🛡️ Isolation Strategy（隔離戦略）](#-isolation-strategy%E9%9A%94%E9%9B%A2%E6%88%A6%E7%95%A5)
+    - [Termination Protection とは？](#termination-protection-%E3%81%A8%E3%81%AF)
+  - [🔧 Security Group 更新ポイント](#-security-group-%E6%9B%B4%E6%96%B0%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88)
+  - [🚀 Systems Manager Run Command で揮発性データ収集](#-systems-manager-run-command-%E3%81%A7%E6%8F%AE%E7%99%BA%E6%80%A7%E3%83%87%E3%83%BC%E3%82%BF%E5%8F%8E%E9%9B%86)
+    - [スクリプト例（Linux）](#%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E4%BE%8Blinux)
+    - [実行手順](#%E5%AE%9F%E8%A1%8C%E6%89%8B%E9%A0%86)
+      - [✅ SSM Run Command が SSH/RDP より優れる点](#-ssm-run-command-%E3%81%8C-sshrdp-%E3%82%88%E3%82%8A%E5%84%AA%E3%82%8C%E3%82%8B%E7%82%B9)
+  - [💾 EBS ボリュームのスナップショット & タグ付け](#-ebs-%E3%83%9C%E3%83%AA%E3%83%A5%E3%83%BC%E3%83%A0%E3%81%AE%E3%82%B9%E3%83%8A%E3%83%83%E3%83%97%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88--%E3%82%BF%E3%82%B0%E4%BB%98%E3%81%91)
+    - [スナップショット作成コマンド](#%E3%82%B9%E3%83%8A%E3%83%83%E3%83%97%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%E4%BD%9C%E6%88%90%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89)
+    - [タグ例](#%E3%82%BF%E3%82%B0%E4%BE%8B)
+  - [🛠️ 侵害シナリオの具体例と対処](#-%E4%BE%B5%E5%AE%B3%E3%82%B7%E3%83%8A%E3%83%AA%E3%82%AA%E3%81%AE%E5%85%B7%E4%BD%93%E4%BE%8B%E3%81%A8%E5%AF%BE%E5%87%A6)
+  - [🔐 セキュリティチェックリスト](#-%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%83%81%E3%82%A7%E3%83%83%E3%82%AF%E3%83%AA%E3%82%B9%E3%83%88)
+  - [❓ なぜ **Systems Manager Run Command** を使用して揮発性データを収集するのか](#-%E3%81%AA%E3%81%9C-systems-manager-run-command-%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%A6%E6%8F%AE%E7%99%BA%E6%80%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E5%8F%8E%E9%9B%86%E3%81%99%E3%82%8B%E3%81%AE%E3%81%8B)
+    - [Run Command のメリット](#run-command-%E3%81%AE%E3%83%A1%E3%83%AA%E3%83%83%E3%83%88)
+    - [D. なぜ **SSH / RDP セッション** ではないのか](#d-%E3%81%AA%E3%81%9C-ssh--rdp-%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3-%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%84%E3%81%AE%E3%81%8B)
+  - [❓ なぜ **F. State Manager Association** を使わず、**E. create-snapshot** を採用するのか](#-%E3%81%AA%E3%81%9C-f-state-manager-association-%E3%82%92%E4%BD%BF%E3%82%8F%E3%81%9Ae-create-snapshot-%E3%82%92%E6%8E%A1%E7%94%A8%E3%81%99%E3%82%8B%E3%81%AE%E3%81%8B)
+  - [❌ なぜオプション **B / D / F** は最適ではないのか？](#-%E3%81%AA%E3%81%9C%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3-b--d--f-%E3%81%AF%E6%9C%80%E9%81%A9%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%84%E3%81%AE%E3%81%8B)
+    - [オプション B: インスタンスを隔離サブネットに移動](#%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3-b-%E3%82%A4%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%B3%E3%82%B9%E3%82%92%E9%9A%94%E9%9B%A2%E3%82%B5%E3%83%96%E3%83%8D%E3%83%83%E3%83%88%E3%81%AB%E7%A7%BB%E5%8B%95)
+    - [オプション D: SSH / RDP セッションでスクリプト実行](#%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3-d-ssh--rdp-%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%A7%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E5%AE%9F%E8%A1%8C)
+    - [オプション F: State Manager Association でスナップショット生成](#%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3-f-state-manager-association-%E3%81%A7%E3%82%B9%E3%83%8A%E3%83%83%E3%83%97%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%E7%94%9F%E6%88%90)
+  - [📚 補足：RDP セッションとは？Run Command / State Manager の代表的ユースケース](#-%E8%A3%9C%E8%B6%B3rdp-%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%A8%E3%81%AFrun-command--state-manager-%E3%81%AE%E4%BB%A3%E8%A1%A8%E7%9A%84%E3%83%A6%E3%83%BC%E3%82%B9%E3%82%B1%E3%83%BC%E3%82%B9)
+    - [🔹 RDP セッションとは](#-rdp-%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%A8%E3%81%AF)
+    - [🔹 Run Command が活躍するその他シナリオ](#-run-command-%E3%81%8C%E6%B4%BB%E8%BA%8D%E3%81%99%E3%82%8B%E3%81%9D%E3%81%AE%E4%BB%96%E3%82%B7%E3%83%8A%E3%83%AA%E3%82%AA)
+    - [🔹 Systems Manager **State Manager** の主な用途](#-systems-manager-state-manager-%E3%81%AE%E4%B8%BB%E3%81%AA%E7%94%A8%E9%80%94)
+      - [Association を作成するとは？](#association-%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B%E3%81%A8%E3%81%AF)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 
 # AWS EC2 × SSM：セキュリティインシデント対応プロセスの安全設計（メモリ保持と隔離）
 

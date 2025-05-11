@@ -1,3 +1,19 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [AWS Lambda × S3: Secure Architecture for Cross-Account Serverless Image Processing](#aws-lambda-%C3%97-s3-secure-architecture-for-cross-account-serverless-image-processing)
+  - [📘 Scenario](#-scenario)
+  - [🎯 Test Points](#-test-points)
+  - [✅ Summary](#-summary)
+  - [🛠️ Implementation Example](#-implementation-example)
+    - [In Account B: Create IAM Role (ThumbXRole)](#in-account-b-create-iam-role-thumbxrole)
+    - [In Account A: Add AssumeRole permission to Lambda role](#in-account-a-add-assumerole-permission-to-lambda-role)
+    - [Lambda Code: AssumeRole Execution](#lambda-code-assumerole-execution)
+  - [🔐 Security Checklist](#-security-checklist)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 
 # AWS Lambda × S3: Secure Architecture for Cross-Account Serverless Image Processing
 ---
