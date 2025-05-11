@@ -48,6 +48,7 @@
 - [AWS Lambda × S3 ：サーバーレス画像処理システムの安全設計](Scenario1_ja.md)
 - [AWS Lambda × S3: Secure Architecture for Cross-Account Serverless Image Processing](Scenario2_en.md)
 - [AWS Lambda × S3 ：クロスアカウントサーバーレス画像処理システムの安全設計](Scenario2_ja.md)
+- [AWS EC2 × SSM: Secure Incident‑Response Workflow (Memory Preservation & Isolation)](Scenario3_en.md)
 - [AWS EC2 × SSM：セキュリティインシデント対応プロセスの安全設計（メモリ保持と隔離）](Scenario3_ja.md)
 
 <!-- docs-index:end -->
