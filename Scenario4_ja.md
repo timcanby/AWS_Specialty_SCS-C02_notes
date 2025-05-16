@@ -2,7 +2,7 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**
 
-- [AWS CloudFormation StackSets × セキュリティ通知設計ドキュメント（日本語）](#aws-cloudformation-stacksets-%C3%97-%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E9%80%9A%E7%9F%A5%E8%A8%AD%E8%A8%88%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E6%97%A5%E6%9C%AC%E8%AA%9E)
+- [AWS CloudFormation StackSets × セキュリティ通知設計ドキュメント](#aws-cloudformation-stacksets-%C3%97-%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E9%80%9A%E7%9F%A5%E8%A8%AD%E8%A8%88%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88)
   - [📘 Scenario（シナリオ）](#-scenario%E3%82%B7%E3%83%8A%E3%83%AA%E3%82%AA)
   - [🧠 重要ポイント](#-%E9%87%8D%E8%A6%81%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88)
   - [🛠️ 実装例](#-%E5%AE%9F%E8%A3%85%E4%BE%8B)

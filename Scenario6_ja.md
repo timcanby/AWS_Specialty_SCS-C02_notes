@@ -1,3 +1,27 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [🛡️ Amazon DynamoDB × 定期バックアップと保持ポリシー対応設計ドキュメント](#-amazon-dynamodb-%C3%97-%E5%AE%9A%E6%9C%9F%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97%E3%81%A8%E4%BF%9D%E6%8C%81%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E5%AF%BE%E5%BF%9C%E8%A8%AD%E8%A8%88%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88)
+  - [📘 Scenario（シナリオ）](#-scenario%E3%82%B7%E3%83%8A%E3%83%AA%E3%82%AA)
+  - [🧠 重要ポイント](#-%E9%87%8D%E8%A6%81%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88)
+  - [✅ 対応方法のまとめ（バックアップと保持戦略）](#-%E5%AF%BE%E5%BF%9C%E6%96%B9%E6%B3%95%E3%81%AE%E3%81%BE%E3%81%A8%E3%82%81%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97%E3%81%A8%E4%BF%9D%E6%8C%81%E6%88%A6%E7%95%A5)
+    - [1. AWS Backup を利用したバックアッププランの作成](#1-aws-backup-%E3%82%92%E5%88%A9%E7%94%A8%E3%81%97%E3%81%9F%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97%E3%83%97%E3%83%A9%E3%83%B3%E3%81%AE%E4%BD%9C%E6%88%90)
+    - [2. cron スケジュールによる定期バックアップの自動化](#2-cron-%E3%82%B9%E3%82%B1%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%81%AB%E3%82%88%E3%82%8B%E5%AE%9A%E6%9C%9F%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97%E3%81%AE%E8%87%AA%E5%8B%95%E5%8C%96)
+  - [🚫 避けるべき方法](#-%E9%81%BF%E3%81%91%E3%82%8B%E3%81%B9%E3%81%8D%E6%96%B9%E6%B3%95)
+    - [オンデマンドバックアップの直接運用](#%E3%82%AA%E3%83%B3%E3%83%87%E3%83%9E%E3%83%B3%E3%83%89%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97%E3%81%AE%E7%9B%B4%E6%8E%A5%E9%81%8B%E7%94%A8)
+    - [AWS DataSync を用いた方法](#aws-datasync-%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E6%96%B9%E6%B3%95)
+  - [🛠️ 実装例](#-%E5%AE%9F%E8%A3%85%E4%BE%8B)
+    - [AWS Backup プラン定義（JSON）](#aws-backup-%E3%83%97%E3%83%A9%E3%83%B3%E5%AE%9A%E7%BE%A9json)
+    - [各 DynamoDB テーブルにバックアッププランを割り当てる手順](#%E5%90%84-dynamodb-%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%81%AB%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97%E3%83%97%E3%83%A9%E3%83%B3%E3%82%92%E5%89%B2%E3%82%8A%E5%BD%93%E3%81%A6%E3%82%8B%E6%89%8B%E9%A0%86)
+  - [🔁 復元手順（Restore 方法）](#-%E5%BE%A9%E5%85%83%E6%89%8B%E9%A0%86restore-%E6%96%B9%E6%B3%95)
+    - [AWS Backup からの復元手順](#aws-backup-%E3%81%8B%E3%82%89%E3%81%AE%E5%BE%A9%E5%85%83%E6%89%8B%E9%A0%86)
+    - [復元の注意点](#%E5%BE%A9%E5%85%83%E3%81%AE%E6%B3%A8%E6%84%8F%E7%82%B9)
+  - [🔐 セキュリティと監査対応ポイント](#-%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%81%A8%E7%9B%A3%E6%9F%BB%E5%AF%BE%E5%BF%9C%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88)
+  - [📌 結論](#-%E7%B5%90%E8%AB%96)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 
 # 🛡️ Amazon DynamoDB × 定期バックアップと保持ポリシー対応設計ドキュメント
 
