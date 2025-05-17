@@ -1,3 +1,21 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [Cross-Account S3 Access Design Document (Account A → Account B)](#cross-account-s3-access-design-document-account-a-%E2%86%92-account-b)
+  - [📘 Scenario](#-scenario)
+  - [🧠 Key Points](#-key-points)
+  - [✅ Solution: Bucket Policy in Account B](#-solution-bucket-policy-in-account-b)
+    - [Example Bucket Policy in Account B](#example-bucket-policy-in-account-b)
+  - [📘 Required Conditions for Cross-Account Access](#-required-conditions-for-cross-account-access)
+  - [🚫 Common Misconfigurations](#-common-misconfigurations)
+  - [🛡️ Best Practices for Cross-Account S3 Access](#-best-practices-for-cross-account-s3-access)
+  - [✅ Conclusion](#-conclusion)
+  - [🧾 Example IAM Policy in Account A (Accessing User)](#-example-iam-policy-in-account-a-accessing-user)
+  - [📝 Troubleshooting Checklist](#-troubleshooting-checklist)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 
 #  Cross-Account S3 Access Design Document (Account A → Account B)
 
