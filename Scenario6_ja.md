@@ -23,7 +23,7 @@
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 
-# 🛡️ Amazon DynamoDB × 定期バックアップと保持ポリシー対応設計ドキュメント
+#  Amazon DynamoDB × 定期バックアップと保持ポリシー対応設計ドキュメント
 
 ---
 
