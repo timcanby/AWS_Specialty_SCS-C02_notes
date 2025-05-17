@@ -1,3 +1,29 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [AWS Organizations × IAM Identity Center (SSO) - Region and Service Restriction Design Guide](#aws-organizations-%C3%97-iam-identity-center-sso---region-and-service-restriction-design-guide)
+  - [📘 Scenario](#-scenario)
+  - [✅ Recommended Solution](#-recommended-solution)
+    - [**C. Enforce Region and Service Restrictions Using Service Control Policies (SCPs)**](#c-enforce-region-and-service-restrictions-using-service-control-policies-scps)
+  - [🚫 Drawbacks of Other Options](#-drawbacks-of-other-options)
+  - [🧠 Supplemental: Understanding SCPs](#-supplemental-understanding-scps)
+    - [🔐 What is a Service Control Policy (SCP)?](#-what-is-a-service-control-policy-scp)
+  - [🌍 Sample SCP for Region Restriction](#-sample-scp-for-region-restriction)
+  - [🧰 SCP vs. IAM Policy Differences](#-scp-vs-iam-policy-differences)
+  - [✅ Recommended Pattern](#-recommended-pattern)
+  - [📘 Setup Example](#-setup-example)
+    - [✅ Step 1: Secure the Root Account](#-step-1-secure-the-root-account)
+    - [✅ Step 2: Create AWS Organizations and Accounts](#-step-2-create-aws-organizations-and-accounts)
+    - [✅ Step 3: Set Up IAM Identity Center (SSO)](#-step-3-set-up-iam-identity-center-sso)
+    - [✅ Step 4: Enforce Service/Region Restrictions with SCP](#-step-4-enforce-serviceregion-restrictions-with-scp)
+    - [✅ Step 5: Enable Logging with CloudTrail & GuardDuty](#-step-5-enable-logging-with-cloudtrail--guardduty)
+    - [✅ Step 6: Monitor Cost and Budget](#-step-6-monitor-cost-and-budget)
+    - [✅ Step 7: Best Practices](#-step-7-best-practices)
+    - [📌 Summary: Initial Setup Template](#-summary-initial-setup-template)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 #  AWS Organizations × IAM Identity Center (SSO) - Region and Service Restriction Design Guide
 
 ---
