@@ -50,6 +50,7 @@
 - [AWS Security Hub クリティカル検出通知メール送信設計ドキュメント](Scenario11_ja.md)
 - [EC2 Auto Scaling × Long-Term Log Retention Design (New Region)](Scenario12_en.md)
 - [EC2 Auto Scaling × ログ長期保存設計（韓国リージョン）](Scenario12_ja.md)
+- [IAM MFA and Session Duration Confusion Points Summary](Scenario13_en.md)
 - [IAM MFA制限とセッション時間制御の混同ポイントまとめ](Scenario13_ja.md)
 - [AWS Lambda × S3 Secure Design for Serverless Image Processing Systems](Scenario1_en.md)
 - [AWS Lambda × S3 ：サーバーレス画像処理システムの安全設計](Scenario1_ja.md)
