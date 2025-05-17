@@ -55,6 +55,7 @@
 - [Low-Latency, IPsec-Encrypted Hybrid Architecture: Direct Connect + Site-to-Site VPN for On-Prem DB Compliance](Scenario5_en.md)
 - [Direct Connect×Site‑to‑Site VPNで実現する低遅延・高可用なオンプレDB接続構成](Scenario5_ja.md)
 - [🛡️ Amazon DynamoDB × Backup and Retention Policy Compliance Design Document](Scenario6_en.md)
-- [🛡️ Amazon DynamoDB × 定期バックアップと保持ポリシー対応設計ドキュメント](Scenario6_ja.md)
+- [Amazon DynamoDB × 定期バックアップと保持ポリシー対応設計ドキュメント](Scenario6_ja.md)
+- [マルチアカウント認証・認可設計：スケーラブルかつネイティブに構成するための出発点](Scenario7_ja.md)
 
 <!-- docs-index:end -->
