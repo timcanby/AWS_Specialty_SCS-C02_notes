@@ -1,3 +1,17 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [IAM MFA制限とセッション時間制御の混同ポイントまとめ](#iam-mfa%E5%88%B6%E9%99%90%E3%81%A8%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E6%99%82%E9%96%93%E5%88%B6%E5%BE%A1%E3%81%AE%E6%B7%B7%E5%90%8C%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%BE%E3%81%A8%E3%82%81)
+  - [🔄 よくある混同点と補足解説：`aws:MultiFactorAuthAge` と `MaxSessionDuration`](#-%E3%82%88%E3%81%8F%E3%81%82%E3%82%8B%E6%B7%B7%E5%90%8C%E7%82%B9%E3%81%A8%E8%A3%9C%E8%B6%B3%E8%A7%A3%E8%AA%ACawsmultifactorauthage-%E3%81%A8-maxsessionduration)
+    - [🔐 `aws:MultiFactorAuthAge`](#-awsmultifactorauthage)
+    - [🕒 `MaxSessionDuration`](#-maxsessionduration)
+    - [🧩 よくある誤解の例と整理](#-%E3%82%88%E3%81%8F%E3%81%82%E3%82%8B%E8%AA%A4%E8%A7%A3%E3%81%AE%E4%BE%8B%E3%81%A8%E6%95%B4%E7%90%86)
+  - [🔎 補足：他の関連する時間条件（参考）](#-%E8%A3%9C%E8%B6%B3%E4%BB%96%E3%81%AE%E9%96%A2%E9%80%A3%E3%81%99%E3%82%8B%E6%99%82%E9%96%93%E6%9D%A1%E4%BB%B6%E5%8F%82%E8%80%83)
+  - [✅ 結論：時間制御のキーは目的によって正しく使い分ける](#-%E7%B5%90%E8%AB%96%E6%99%82%E9%96%93%E5%88%B6%E5%BE%A1%E3%81%AE%E3%82%AD%E3%83%BC%E3%81%AF%E7%9B%AE%E7%9A%84%E3%81%AB%E3%82%88%E3%81%A3%E3%81%A6%E6%AD%A3%E3%81%97%E3%81%8F%E4%BD%BF%E3%81%84%E5%88%86%E3%81%91%E3%82%8B)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 
 #  IAM MFA制限とセッション時間制御の混同ポイントまとめ
 
