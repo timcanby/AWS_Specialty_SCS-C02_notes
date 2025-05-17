@@ -2,7 +2,7 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**
 
-- [🛡️ Amazon DynamoDB × Backup and Retention Policy Compliance Design Document](#-amazon-dynamodb-%C3%97-backup-and-retention-policy-compliance-design-document)
+- [Amazon DynamoDB × Backup and Retention Policy Compliance Design Document](#amazon-dynamodb-%C3%97-backup-and-retention-policy-compliance-design-document)
   - [📘 Scenario](#-scenario)
   - [🧠 Key Points](#-key-points)
   - [✅ Recommended Approach (Backup and Retention Strategy)](#-recommended-approach-backup-and-retention-strategy)
