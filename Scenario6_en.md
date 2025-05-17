@@ -23,7 +23,7 @@
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 
-# 🛡️ Amazon DynamoDB × Backup and Retention Policy Compliance Design Document
+#  Amazon DynamoDB × Backup and Retention Policy Compliance Design Document
 
 ---
 
