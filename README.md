@@ -49,7 +49,7 @@
 - [AWS Security Hub Critical Finding Email Notification Design Document](Scenario11_en.md)
 - [AWS Security Hub クリティカル検出通知メール送信設計ドキュメント](Scenario11_ja.md)
 - [EC2 Auto Scaling × Long-Term Log Retention Design (New Region)](Scenario12_en.md)
-- [EC2 Auto Scaling × ログ長期保存設計（韓国リージョン）](Scenario13_ja.md)
+- [EC2 Auto Scaling × ログ長期保存設計（韓国リージョン）](Scenario12_ja.md)
 - [AWS Lambda × S3 Secure Design for Serverless Image Processing Systems](Scenario1_en.md)
 - [AWS Lambda × S3 ：サーバーレス画像処理システムの安全設計](Scenario1_ja.md)
 - [AWS Lambda × S3: Secure Architecture for Cross-Account Serverless Image Processing](Scenario2_en.md)
