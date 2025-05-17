@@ -58,6 +58,7 @@
 - [Amazon DynamoDB × 定期バックアップと保持ポリシー対応設計ドキュメント](Scenario6_ja.md)
 - [Multi-Account Authentication and Authorization Design: A Scalable and Native Approach](Scenario7_en.md)
 - [マルチアカウント認証・認可設計：スケーラブルかつネイティブに構成するための出発点](Scenario7_ja.md)
+- [GuardDuty × Automated Incident Containment Design Document (RDP Brute Force Attack Response)](Scenario8_en.md)
 - [GuardDuty × インシデント自動封じ込め設計ドキュメント（RDPブルートフォース攻撃への対応）](Scenario8_ja.md)
 
 <!-- docs-index:end -->
