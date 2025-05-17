@@ -1,3 +1,30 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [GuardDuty × インシデント自動封じ込め設計ドキュメント（RDPブルートフォース攻撃への対応）](#guardduty-%C3%97-%E3%82%A4%E3%83%B3%E3%82%B7%E3%83%87%E3%83%B3%E3%83%88%E8%87%AA%E5%8B%95%E5%B0%81%E3%81%98%E8%BE%BC%E3%82%81%E8%A8%AD%E8%A8%88%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88rdp%E3%83%96%E3%83%AB%E3%83%BC%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%82%B9%E6%94%BB%E6%92%83%E3%81%B8%E3%81%AE%E5%AF%BE%E5%BF%9C)
+  - [📘 Scenario（シナリオ）](#-scenario%E3%82%B7%E3%83%8A%E3%83%AA%E3%82%AA)
+  - [🧠 重要ポイント](#-%E9%87%8D%E8%A6%81%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88)
+  - [🧩 RDP ブルートフォース攻撃とは？](#-rdp-%E3%83%96%E3%83%AB%E3%83%BC%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%82%B9%E6%94%BB%E6%92%83%E3%81%A8%E3%81%AF)
+    - [🔎 具体例（技術的にどういう挙動になるか）](#-%E5%85%B7%E4%BD%93%E4%BE%8B%E6%8A%80%E8%A1%93%E7%9A%84%E3%81%AB%E3%81%A9%E3%81%86%E3%81%84%E3%81%86%E6%8C%99%E5%8B%95%E3%81%AB%E3%81%AA%E3%82%8B%E3%81%8B)
+    - [🧪 事例（AWS GuardDuty の検出に関するシナリオ）](#-%E4%BA%8B%E4%BE%8Baws-guardduty-%E3%81%AE%E6%A4%9C%E5%87%BA%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E3%82%B7%E3%83%8A%E3%83%AA%E3%82%AA)
+    - [⚠️ なぜ危険なのか](#-%E3%81%AA%E3%81%9C%E5%8D%B1%E9%99%BA%E3%81%AA%E3%81%AE%E3%81%8B)
+  - [✅ 対応方法のまとめ（設計方針）](#-%E5%AF%BE%E5%BF%9C%E6%96%B9%E6%B3%95%E3%81%AE%E3%81%BE%E3%81%A8%E3%82%81%E8%A8%AD%E8%A8%88%E6%96%B9%E9%87%9D)
+  - [🚫 避けるべき方法（他の選択肢の注意点）](#-%E9%81%BF%E3%81%91%E3%82%8B%E3%81%B9%E3%81%8D%E6%96%B9%E6%B3%95%E4%BB%96%E3%81%AE%E9%81%B8%E6%8A%9E%E8%82%A2%E3%81%AE%E6%B3%A8%E6%84%8F%E7%82%B9)
+  - [🛠️ 実装例](#-%E5%AE%9F%E8%A3%85%E4%BE%8B)
+    - [EventBridge + Lambda によるブロック処理の流れ](#eventbridge--lambda-%E3%81%AB%E3%82%88%E3%82%8B%E3%83%96%E3%83%AD%E3%83%83%E3%82%AF%E5%87%A6%E7%90%86%E3%81%AE%E6%B5%81%E3%82%8C)
+  - [🧭 AWS Security Hub とは？](#-aws-security-hub-%E3%81%A8%E3%81%AF)
+    - [🔍 主な特徴：](#-%E4%B8%BB%E3%81%AA%E7%89%B9%E5%BE%B4)
+    - [💡 使われるケース](#-%E4%BD%BF%E3%82%8F%E3%82%8C%E3%82%8B%E3%82%B1%E3%83%BC%E3%82%B9)
+  - [🔍 攻撃をブロックした後に行うべき分析と対応](#-%E6%94%BB%E6%92%83%E3%82%92%E3%83%96%E3%83%AD%E3%83%83%E3%82%AF%E3%81%97%E3%81%9F%E5%BE%8C%E3%81%AB%E8%A1%8C%E3%81%86%E3%81%B9%E3%81%8D%E5%88%86%E6%9E%90%E3%81%A8%E5%AF%BE%E5%BF%9C)
+    - [🔬 1. インスタンスのフォレンジック分析（Forensic Analysis）](#-1-%E3%82%A4%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%B3%E3%82%B9%E3%81%AE%E3%83%95%E3%82%A9%E3%83%AC%E3%83%B3%E3%82%B8%E3%83%83%E3%82%AF%E5%88%86%E6%9E%90forensic-analysis)
+    - [🧾 2. CloudTrail および VPC Flow Logs の確認](#-2-cloudtrail-%E3%81%8A%E3%82%88%E3%81%B3-vpc-flow-logs-%E3%81%AE%E7%A2%BA%E8%AA%8D)
+    - [📦 3. AMI/イメージのチェックと再構築](#-3-ami%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8%E3%81%AE%E3%83%81%E3%82%A7%E3%83%83%E3%82%AF%E3%81%A8%E5%86%8D%E6%A7%8B%E7%AF%89)
+    - [📘 4. GuardDuty Findings のトレンド監視と自動分類](#-4-guardduty-findings-%E3%81%AE%E3%83%88%E3%83%AC%E3%83%B3%E3%83%89%E7%9B%A3%E8%A6%96%E3%81%A8%E8%87%AA%E5%8B%95%E5%88%86%E9%A1%9E)
+    - [🛡️ 5. セキュリティポリシーと監視ルールの見直し](#-5-%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E3%81%A8%E7%9B%A3%E8%A6%96%E3%83%AB%E3%83%BC%E3%83%AB%E3%81%AE%E8%A6%8B%E7%9B%B4%E3%81%97)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 
 #  GuardDuty × インシデント自動封じ込め設計ドキュメント（RDPブルートフォース攻撃への対応）
 
