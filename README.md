@@ -54,6 +54,7 @@
 - [IAM MFA制限とセッション時間制御の混同ポイントまとめ](Scenario13_ja.md)
 - [AWS Organizations × Multi-Account Security Monitoring and Auto-Remediation Design Document](Scenario14_en.md)
 - [AWS Organizations × マルチアカウントセキュリティ監視・自動修復設計ドキュメント](Scenario14_ja.md)
+- [AWS Organizations × IAM Identity Center（SSO）によるリージョン・サービス制限設計ドキュメント](Scenario15_ja.md)
 - [AWS Lambda × S3 Secure Design for Serverless Image Processing Systems](Scenario1_en.md)
 - [AWS Lambda × S3 ：サーバーレス画像処理システムの安全設計](Scenario1_ja.md)
 - [AWS Lambda × S3: Secure Architecture for Cross-Account Serverless Image Processing](Scenario2_en.md)
