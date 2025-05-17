@@ -1,3 +1,18 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [AWS Security Hub クリティカル検出通知メール送信設計ドキュメント](#aws-security-hub-%E3%82%AF%E3%83%AA%E3%83%86%E3%82%A3%E3%82%AB%E3%83%AB%E6%A4%9C%E5%87%BA%E9%80%9A%E7%9F%A5%E3%83%A1%E3%83%BC%E3%83%AB%E9%80%81%E4%BF%A1%E8%A8%AD%E8%A8%88%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88)
+  - [📘 Scenario（シナリオ）](#-scenario%E3%82%B7%E3%83%8A%E3%83%AA%E3%82%AA)
+  - [🧠 重要ポイント](#-%E9%87%8D%E8%A6%81%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88)
+  - [✅ 最適な構成（正解）](#-%E6%9C%80%E9%81%A9%E3%81%AA%E6%A7%8B%E6%88%90%E6%AD%A3%E8%A7%A3)
+    - [C. EventBridge ルールでクリティカル検出を監視し、SNS でメール送信する](#c-eventbridge-%E3%83%AB%E3%83%BC%E3%83%AB%E3%81%A7%E3%82%AF%E3%83%AA%E3%83%86%E3%82%A3%E3%82%AB%E3%83%AB%E6%A4%9C%E5%87%BA%E3%82%92%E7%9B%A3%E8%A6%96%E3%81%97sns-%E3%81%A7%E3%83%A1%E3%83%BC%E3%83%AB%E9%80%81%E4%BF%A1%E3%81%99%E3%82%8B)
+    - [🎯 EventBridge フィルター例：](#-eventbridge-%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF%E3%83%BC%E4%BE%8B)
+  - [🚫 他の選択肢の問題点](#-%E4%BB%96%E3%81%AE%E9%81%B8%E6%8A%9E%E8%82%A2%E3%81%AE%E5%95%8F%E9%A1%8C%E7%82%B9)
+  - [📌 結論](#-%E7%B5%90%E8%AB%96)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 #  AWS Security Hub クリティカル検出通知メール送信設計ドキュメント
 
 ---
