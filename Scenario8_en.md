@@ -1,3 +1,30 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [GuardDuty × Automated Incident Containment Design Document (RDP Brute Force Attack Response)](#guardduty-%C3%97-automated-incident-containment-design-document-rdp-brute-force-attack-response)
+  - [📘 Scenario](#-scenario)
+  - [🧠 Key Points](#-key-points)
+  - [🧩 What is an RDP Brute Force Attack?](#-what-is-an-rdp-brute-force-attack)
+    - [🔎 Technical Behavior Examples](#-technical-behavior-examples)
+    - [🧪 Examples of GuardDuty Detection Scenarios](#-examples-of-guardduty-detection-scenarios)
+    - [⚠️ Why It’s Dangerous](#-why-its-dangerous)
+  - [✅ Recommended Design Approach](#-recommended-design-approach)
+  - [🚫 Methods to Avoid](#-methods-to-avoid)
+  - [🛠️ Implementation Example](#-implementation-example)
+    - [EventBridge + Lambda Blocking Workflow](#eventbridge--lambda-blocking-workflow)
+  - [🧭 What is AWS Security Hub?](#-what-is-aws-security-hub)
+    - [🔍 Key Features:](#-key-features)
+    - [💡 Common Use Cases](#-common-use-cases)
+  - [🔍 What to Do After Blocking the Attack](#-what-to-do-after-blocking-the-attack)
+    - [🔬 1. Forensic Analysis of the Instance](#-1-forensic-analysis-of-the-instance)
+    - [🧾 2. Analyze CloudTrail and VPC Flow Logs](#-2-analyze-cloudtrail-and-vpc-flow-logs)
+    - [📦 3. AMI/Image Audit and Rebuild](#-3-amiimage-audit-and-rebuild)
+    - [📘 4. Monitor Trends and Classify Findings](#-4-monitor-trends-and-classify-findings)
+    - [🛡️ 5. Review Security Policies and Monitoring Rules](#-5-review-security-policies-and-monitoring-rules)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 
 #  GuardDuty × Automated Incident Containment Design Document (RDP Brute Force Attack Response)
 
