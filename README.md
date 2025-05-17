@@ -46,7 +46,7 @@
 
 - [Cross-Account S3 Access Design Document (Account A → Account B)](Scenario10_en.md)
 - [クロスアカウント S3 アクセス設計ドキュメント（Account A → Account B）](Scenario10_ja.md)
-- [AWS Security Hub Critical Finding Email Notification Design Document](Scenario12_en.md)
+- [AWS Security Hub Critical Finding Email Notification Design Document](Scenario11_en.md)
 - [AWS Security Hub クリティカル検出通知メール送信設計ドキュメント](Scenario12_ja.md)
 - [EC2 Auto Scaling × Long-Term Log Retention Design (New Region)](Scenario13_en.md)
 - [EC2 Auto Scaling × ログ長期保存設計（韓国リージョン）](Scenario13_ja.md)
