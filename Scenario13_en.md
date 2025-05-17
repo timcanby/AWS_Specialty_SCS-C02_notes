@@ -1,3 +1,17 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [IAM MFA and Session Duration Confusion Points Summary](#iam-mfa-and-session-duration-confusion-points-summary)
+  - [🔄 Common Confusions: `aws:MultiFactorAuthAge` vs. `MaxSessionDuration`](#-common-confusions-awsmultifactorauthage-vs-maxsessionduration)
+    - [🔐 `aws:MultiFactorAuthAge`](#-awsmultifactorauthage)
+    - [🕒 `MaxSessionDuration`](#-maxsessionduration)
+    - [🧩 Common Misconceptions and Clarifications](#-common-misconceptions-and-clarifications)
+  - [🔎 Other Related Time Keys (for reference)](#-other-related-time-keys-for-reference)
+  - [✅ Conclusion: Use Time Keys Appropriately Based on Context](#-conclusion-use-time-keys-appropriately-based-on-context)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 
 #  IAM MFA and Session Duration Confusion Points Summary
 
