@@ -22,7 +22,7 @@
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 
-#  EC2 Auto Scaling × ログ長期保存設計（韓国リージョン）
+#  EC2 Auto Scaling × ログ長期保存設計（新しいリージョン）
 
 ---
 
