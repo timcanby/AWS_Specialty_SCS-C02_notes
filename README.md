@@ -60,6 +60,7 @@
 - [マルチアカウント認証・認可設計：スケーラブルかつネイティブに構成するための出発点](Scenario7_ja.md)
 - [GuardDuty × Automated Incident Containment Design Document (RDP Brute Force Attack Response)](Scenario8_en.md)
 - [GuardDuty × インシデント自動封じ込め設計ドキュメント（RDPブルートフォース攻撃への対応）](Scenario8_ja.md)
+- [GuardDuty "Impact:IAMUser/AnomalousBehavior" Incident Investigation Design Document](Scenario9_en.md)
 - [GuardDuty 「Impact:IAMUser/AnomalousBehavior」インシデント初動調査設計ドキュメント](Scenario9_ja.md)
 
 <!-- docs-index:end -->
