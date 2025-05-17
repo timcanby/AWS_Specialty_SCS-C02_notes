@@ -1,3 +1,19 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [AWS Organizations × Multi-Account Security Monitoring and Auto-Remediation Design Document](#aws-organizations-%C3%97-multi-account-security-monitoring-and-auto-remediation-design-document)
+  - [📘 Scenario](#-scenario)
+  - [🧠 Design Requirements and Key Considerations](#-design-requirements-and-key-considerations)
+  - [✅ Recommended Architecture](#-recommended-architecture)
+    - [**D. AWS Security Hub + EventBridge + Lambda + SNS**](#d-aws-security-hub--eventbridge--lambda--sns)
+  - [🔍 Limitations of GuardDuty Alone](#-limitations-of-guardduty-alone)
+    - [❗ Common Blind Spots of GuardDuty](#-common-blind-spots-of-guardduty)
+  - [🧭 Why Security Hub is Essential](#-why-security-hub-is-essential)
+  - [✅ Final Architecture Recommendation](#-final-architecture-recommendation)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 
 #  AWS Organizations × Multi-Account Security Monitoring and Auto-Remediation Design Document
 
