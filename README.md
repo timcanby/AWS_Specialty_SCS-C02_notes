@@ -46,6 +46,7 @@
 
 - [Cross-Account S3 Access Design Document (Account A → Account B)](Scenario10_en.md)
 - [クロスアカウント S3 アクセス設計ドキュメント（Account A → Account B）](Scenario10_ja.md)
+- [AWS Security Hub Critical Finding Email Notification Design Document](Scenario12_en.md)
 - [AWS Security Hub クリティカル検出通知メール送信設計ドキュメント](Scenario12_ja.md)
 - [AWS Lambda × S3 Secure Design for Serverless Image Processing Systems](Scenario1_en.md)
 - [AWS Lambda × S3 ：サーバーレス画像処理システムの安全設計](Scenario1_ja.md)
