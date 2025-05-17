@@ -1,3 +1,26 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [EC2 Auto Scaling × ログ長期保存設計（韓国リージョン）](#ec2-auto-scaling-%C3%97-%E3%83%AD%E3%82%B0%E9%95%B7%E6%9C%9F%E4%BF%9D%E5%AD%98%E8%A8%AD%E8%A8%88%E9%9F%93%E5%9B%BD%E3%83%AA%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3)
+  - [📘 シナリオ](#-%E3%82%B7%E3%83%8A%E3%83%AA%E3%82%AA)
+  - [🧠 設計観点](#-%E8%A8%AD%E8%A8%88%E8%A6%B3%E7%82%B9)
+  - [🛠️ 構成要素と推奨実装](#-%E6%A7%8B%E6%88%90%E8%A6%81%E7%B4%A0%E3%81%A8%E6%8E%A8%E5%A5%A8%E5%AE%9F%E8%A3%85)
+    - [1. EC2 インスタンスに CloudWatch エージェントを導入](#1-ec2-%E3%82%A4%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%B3%E3%82%B9%E3%81%AB-cloudwatch-%E3%82%A8%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%E3%82%92%E5%B0%8E%E5%85%A5)
+    - [2. CloudWatch Logs 側でロググループの保存期間を明示設定](#2-cloudwatch-logs-%E5%81%B4%E3%81%A7%E3%83%AD%E3%82%B0%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E3%81%AE%E4%BF%9D%E5%AD%98%E6%9C%9F%E9%96%93%E3%82%92%E6%98%8E%E7%A4%BA%E8%A8%AD%E5%AE%9A)
+    - [3. IAM ロールを通じたログ転送権限の付与](#3-iam-%E3%83%AD%E3%83%BC%E3%83%AB%E3%82%92%E9%80%9A%E3%81%98%E3%81%9F%E3%83%AD%E3%82%B0%E8%BB%A2%E9%80%81%E6%A8%A9%E9%99%90%E3%81%AE%E4%BB%98%E4%B8%8E)
+  - [🔐 セキュリティと運用の考慮点](#-%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%81%A8%E9%81%8B%E7%94%A8%E3%81%AE%E8%80%83%E6%85%AE%E7%82%B9)
+  - [✅ 結論](#-%E7%B5%90%E8%AB%96)
+  - [📊 Auto Scaling × ログ配信状況のモニタリング設計](#-auto-scaling-%C3%97-%E3%83%AD%E3%82%B0%E9%85%8D%E4%BF%A1%E7%8A%B6%E6%B3%81%E3%81%AE%E3%83%A2%E3%83%8B%E3%82%BF%E3%83%AA%E3%83%B3%E3%82%B0%E8%A8%AD%E8%A8%88)
+    - [✅ モニタリング手法](#-%E3%83%A2%E3%83%8B%E3%82%BF%E3%83%AA%E3%83%B3%E3%82%B0%E6%89%8B%E6%B3%95)
+      - [1. CloudWatch Logs Insights を用いたログ流入監視](#1-cloudwatch-logs-insights-%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E3%83%AD%E3%82%B0%E6%B5%81%E5%85%A5%E7%9B%A3%E8%A6%96)
+      - [2. CloudWatch Metric Filter によるログ配信検出](#2-cloudwatch-metric-filter-%E3%81%AB%E3%82%88%E3%82%8B%E3%83%AD%E3%82%B0%E9%85%8D%E4%BF%A1%E6%A4%9C%E5%87%BA)
+      - [3. Auto Scaling ライフサイクルイベントのログ化](#3-auto-scaling-%E3%83%A9%E3%82%A4%E3%83%95%E3%82%B5%E3%82%A4%E3%82%AF%E3%83%AB%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%AE%E3%83%AD%E3%82%B0%E5%8C%96)
+      - [4. CloudWatch Alarm による通知設定](#4-cloudwatch-alarm-%E3%81%AB%E3%82%88%E3%82%8B%E9%80%9A%E7%9F%A5%E8%A8%AD%E5%AE%9A)
+  - [🔁 運用補足](#-%E9%81%8B%E7%94%A8%E8%A3%9C%E8%B6%B3)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 
 #  EC2 Auto Scaling × ログ長期保存設計（韓国リージョン）
 

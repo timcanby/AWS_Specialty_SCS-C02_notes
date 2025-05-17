@@ -1,3 +1,18 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [AWS Security Hub Critical Finding Email Notification Design Document](#aws-security-hub-critical-finding-email-notification-design-document)
+  - [📘 Scenario](#-scenario)
+  - [🧠 Key Points](#-key-points)
+  - [✅ Best Architecture (Correct Answer)](#-best-architecture-correct-answer)
+    - [C. Use an EventBridge rule to filter for critical findings and send to SNS for email delivery](#c-use-an-eventbridge-rule-to-filter-for-critical-findings-and-send-to-sns-for-email-delivery)
+    - [🎯 Example EventBridge Rule Pattern:](#-example-eventbridge-rule-pattern)
+  - [🚫 Issues With Other Options](#-issues-with-other-options)
+  - [📌 Conclusion](#-conclusion)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 
 #  AWS Security Hub Critical Finding Email Notification Design Document
 
