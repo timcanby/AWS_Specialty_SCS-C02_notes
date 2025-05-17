@@ -1,3 +1,23 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [Multi-Account Authentication and Authorization Design: A Scalable and Native Approach](#multi-account-authentication-and-authorization-design-a-scalable-and-native-approach)
+  - [📘 Scenario](#-scenario)
+  - [🧠 Key Points](#-key-points)
+  - [✅ Recommended Approach (Design Principles)](#-recommended-approach-design-principles)
+    - [1. Use the Default Directory in IAM Identity Center](#1-use-the-default-directory-in-iam-identity-center)
+    - [2. Map Groups to Permission Sets and Assign to Accounts](#2-map-groups-to-permission-sets-and-assign-to-accounts)
+    - [3. Enable Access via IAM Identity Center User Portal](#3-enable-access-via-iam-identity-center-user-portal)
+  - [🚫 Approaches to Avoid](#-approaches-to-avoid)
+    - [1. Using External or On-Premises Directories](#1-using-external-or-on-premises-directories)
+    - [2. Direct Mapping to IAM Users](#2-direct-mapping-to-iam-users)
+  - [🛠️ Implementation Example](#-implementation-example)
+    - [Initial Setup with IAM Identity Center](#initial-setup-with-iam-identity-center)
+  - [📌 Conclusion](#-conclusion)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 
 #  Multi-Account Authentication and Authorization Design: A Scalable and Native Approach
 
