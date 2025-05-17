@@ -1,3 +1,27 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [🛡️ Amazon DynamoDB × Backup and Retention Policy Compliance Design Document](#-amazon-dynamodb-%C3%97-backup-and-retention-policy-compliance-design-document)
+  - [📘 Scenario](#-scenario)
+  - [🧠 Key Points](#-key-points)
+  - [✅ Recommended Approach (Backup and Retention Strategy)](#-recommended-approach-backup-and-retention-strategy)
+    - [1. Create a Backup Plan Using AWS Backup](#1-create-a-backup-plan-using-aws-backup)
+    - [2. Automate Scheduled Backups Using cron Expressions](#2-automate-scheduled-backups-using-cron-expressions)
+  - [🚫 Methods to Avoid](#-methods-to-avoid)
+    - [Manual Use of On-Demand Backups](#manual-use-of-on-demand-backups)
+    - [Using AWS DataSync](#using-aws-datasync)
+  - [🛠️ Implementation Example](#-implementation-example)
+    - [AWS Backup Plan Definition (JSON)](#aws-backup-plan-definition-json)
+    - [Assigning the Backup Plan to DynamoDB Tables](#assigning-the-backup-plan-to-dynamodb-tables)
+  - [🔁 Restore Procedure](#-restore-procedure)
+    - [Steps to Restore from AWS Backup](#steps-to-restore-from-aws-backup)
+    - [Restore Considerations](#restore-considerations)
+  - [🔐 Security and Audit Considerations](#-security-and-audit-considerations)
+  - [📌 Conclusion](#-conclusion)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 
 # 🛡️ Amazon DynamoDB × Backup and Retention Policy Compliance Design Document
 
