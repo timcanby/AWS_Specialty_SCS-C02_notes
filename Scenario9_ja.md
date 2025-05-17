@@ -1,3 +1,25 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [GuardDuty 「Impact:IAMUser/AnomalousBehavior」インシデント初動調査設計ドキュメント](#guardduty-impactiamuseranomalousbehavior%E3%82%A4%E3%83%B3%E3%82%B7%E3%83%87%E3%83%B3%E3%83%88%E5%88%9D%E5%8B%95%E8%AA%BF%E6%9F%BB%E8%A8%AD%E8%A8%88%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88)
+  - [📘 Scenario（シナリオ）](#-scenario%E3%82%B7%E3%83%8A%E3%83%AA%E3%82%AA)
+  - [🧠 重要ポイント](#-%E9%87%8D%E8%A6%81%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88)
+  - [✅ 最適なアプローチ](#-%E6%9C%80%E9%81%A9%E3%81%AA%E3%82%A2%E3%83%97%E3%83%AD%E3%83%BC%E3%83%81)
+    - [B. 読み取り専用（ReadOnly）で GuardDuty の Finding を確認し、Amazon Detective で API コールの文脈を分析する](#b-%E8%AA%AD%E3%81%BF%E5%8F%96%E3%82%8A%E5%B0%82%E7%94%A8readonly%E3%81%A7-guardduty-%E3%81%AE-finding-%E3%82%92%E7%A2%BA%E8%AA%8D%E3%81%97amazon-detective-%E3%81%A7-api-%E3%82%B3%E3%83%BC%E3%83%AB%E3%81%AE%E6%96%87%E8%84%88%E3%82%92%E5%88%86%E6%9E%90%E3%81%99%E3%82%8B)
+  - [🚫 他の選択肢の問題点](#-%E4%BB%96%E3%81%AE%E9%81%B8%E6%8A%9E%E8%82%A2%E3%81%AE%E5%95%8F%E9%A1%8C%E7%82%B9)
+  - [📌 結論](#-%E7%B5%90%E8%AB%96)
+  - [🔎 Amazon Detective と AWS CloudTrail Insights の比較と使い分け](#-amazon-detective-%E3%81%A8-aws-cloudtrail-insights-%E3%81%AE%E6%AF%94%E8%BC%83%E3%81%A8%E4%BD%BF%E3%81%84%E5%88%86%E3%81%91)
+    - [🧭 Amazon Detective の役割とユースケース](#-amazon-detective-%E3%81%AE%E5%BD%B9%E5%89%B2%E3%81%A8%E3%83%A6%E3%83%BC%E3%82%B9%E3%82%B1%E3%83%BC%E3%82%B9)
+      - [🔍 主な機能：](#-%E4%B8%BB%E3%81%AA%E6%A9%9F%E8%83%BD)
+      - [💡 適した場面：](#-%E9%81%A9%E3%81%97%E3%81%9F%E5%A0%B4%E9%9D%A2)
+    - [📘 AWS CloudTrail Insights & CloudTrail Lake の役割とユースケース](#-aws-cloudtrail-insights--cloudtrail-lake-%E3%81%AE%E5%BD%B9%E5%89%B2%E3%81%A8%E3%83%A6%E3%83%BC%E3%82%B9%E3%82%B1%E3%83%BC%E3%82%B9)
+      - [🔍 主な機能：](#-%E4%B8%BB%E3%81%AA%E6%A9%9F%E8%83%BD-1)
+      - [💡 適した場面：](#-%E9%81%A9%E3%81%97%E3%81%9F%E5%A0%B4%E9%9D%A2-1)
+  - [✅ まとめ：どちらを使うべきか？](#-%E3%81%BE%E3%81%A8%E3%82%81%E3%81%A9%E3%81%A1%E3%82%89%E3%82%92%E4%BD%BF%E3%81%86%E3%81%B9%E3%81%8D%E3%81%8B)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 
 #  GuardDuty 「Impact:IAMUser/AnomalousBehavior」インシデント初動調査設計ドキュメント
 

@@ -1,3 +1,24 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [GuardDuty "Impact:IAMUser/AnomalousBehavior" Incident Investigation Design Document](#guardduty-impactiamuseranomalousbehavior-incident-investigation-design-document)
+  - [📘 Scenario](#-scenario)
+  - [🧠 Key Points](#-key-points)
+  - [✅ Recommended Approach](#-recommended-approach)
+    - [B. Review the GuardDuty finding using ReadOnly credentials and analyze API behavior in context using Amazon Detective](#b-review-the-guardduty-finding-using-readonly-credentials-and-analyze-api-behavior-in-context-using-amazon-detective)
+  - [🚫 Issues with Other Options](#-issues-with-other-options)
+  - [🧭 Amazon Detective vs. AWS CloudTrail Insights & CloudTrail Lake](#-amazon-detective-vs-aws-cloudtrail-insights--cloudtrail-lake)
+    - [🕵️ Amazon Detective: Role and Use Cases](#-amazon-detective-role-and-use-cases)
+      - [🔍 Key Features:](#-key-features)
+      - [💡 Best Used For:](#-best-used-for)
+    - [📘 AWS CloudTrail Insights & CloudTrail Lake: Role and Use Cases](#-aws-cloudtrail-insights--cloudtrail-lake-role-and-use-cases)
+      - [🔍 Key Features:](#-key-features-1)
+      - [💡 Best Used For:](#-best-used-for-1)
+  - [✅ Summary: Which Tool to Use When?](#-summary-which-tool-to-use-when)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 
 #  GuardDuty "Impact:IAMUser/AnomalousBehavior" Incident Investigation Design Document
 
