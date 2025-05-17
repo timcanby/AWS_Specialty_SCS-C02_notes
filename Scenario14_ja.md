@@ -1,3 +1,26 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [EC2 Auto Scaling × Long-Term Log Retention Design (New Region)](#ec2-auto-scaling-%C3%97-long-term-log-retention-design-new-region)
+  - [📘 Scenario](#-scenario)
+  - [🧠 Design Considerations](#-design-considerations)
+  - [🛠️ Components and Recommended Implementation](#-components-and-recommended-implementation)
+    - [1. Install and configure the CloudWatch Agent on all EC2 instances](#1-install-and-configure-the-cloudwatch-agent-on-all-ec2-instances)
+    - [2. Set log retention policy for CloudWatch Logs to 7 years](#2-set-log-retention-policy-for-cloudwatch-logs-to-7-years)
+    - [3. Attach an IAM Role with log write permissions to EC2 instances](#3-attach-an-iam-role-with-log-write-permissions-to-ec2-instances)
+  - [🔐 Security and Operational Considerations](#-security-and-operational-considerations)
+  - [📊 Monitoring Log Delivery in Auto Scaling Environments](#-monitoring-log-delivery-in-auto-scaling-environments)
+    - [✅ Monitoring Methods](#-monitoring-methods)
+      - [1. Use CloudWatch Logs Insights to query log delivery](#1-use-cloudwatch-logs-insights-to-query-log-delivery)
+      - [2. Set up Metric Filters in CloudWatch Logs](#2-set-up-metric-filters-in-cloudwatch-logs)
+      - [3. Use Auto Scaling Lifecycle Hooks for log validation](#3-use-auto-scaling-lifecycle-hooks-for-log-validation)
+      - [4. Monitor using CloudWatch Alarms](#4-monitor-using-cloudwatch-alarms)
+  - [🔁 Operational Tips](#-operational-tips)
+  - [✅ Conclusion](#-conclusion)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 
 #  EC2 Auto Scaling × Long-Term Log Retention Design (New Region)
 
